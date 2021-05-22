@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.updater;
+package org.thunder.updater;
 
 import android.content.Context;
 import android.content.Intent;
@@ -47,15 +47,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import org.lineageos.updater.controller.UpdaterController;
-import org.lineageos.updater.controller.UpdaterService;
-import org.lineageos.updater.misc.BuildInfoUtils;
-import org.lineageos.updater.misc.Constants;
-import org.lineageos.updater.misc.PermissionsUtils;
-import org.lineageos.updater.misc.StringGenerator;
-import org.lineageos.updater.misc.Utils;
-import org.lineageos.updater.model.UpdateInfo;
-import org.lineageos.updater.model.UpdateStatus;
+import org.thunder.updater.controller.UpdaterController;
+import org.thunder.updater.controller.UpdaterService;
+import org.thunder.updater.misc.BuildInfoUtils;
+import org.thunder.updater.misc.Constants;
+import org.thunder.updater.misc.PermissionsUtils;
+import org.thunder.updater.misc.StringGenerator;
+import org.thunder.updater.misc.Utils;
+import org.thunder.updater.model.UpdateInfo;
+import org.thunder.updater.model.UpdateStatus;
 
 import java.io.File;
 import java.io.IOException;

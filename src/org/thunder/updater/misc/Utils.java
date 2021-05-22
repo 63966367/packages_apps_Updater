@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.updater.misc;
+package org.thunder.updater.misc;
 
 import android.app.AlarmManager;
 import android.content.ClipData;
@@ -34,12 +34,12 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.lineageos.updater.R;
-import org.lineageos.updater.UpdatesDbHelper;
-import org.lineageos.updater.controller.UpdaterService;
-import org.lineageos.updater.model.Update;
-import org.lineageos.updater.model.UpdateBaseInfo;
-import org.lineageos.updater.model.UpdateInfo;
+import org.thunder.updater.R;
+import org.thunder.updater.UpdatesDbHelper;
+import org.thunder.updater.controller.UpdaterService;
+import org.thunder.updater.model.Update;
+import org.thunder.updater.model.UpdateBaseInfo;
+import org.thunder.updater.model.UpdateInfo;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -89,7 +89,13 @@ public class Utils {
         update.setDownloadId(object.getString("id"));
         update.setType(object.getString("romtype"));
         update.setFileSize(object.getLong("size"));
-        update.setDownloadUrl(object.getString("url"));
+        String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
+                SystemProperties.get(Constants.PROP_DEVICE));
+        String type = SystemProperties.get(Constants.PROP_RELEASE_TYPE).toLowerCase(Locale.ROOT);
+        String downloadUrl = Constants.DOWNLOAD_URL.replace("${device}", device)
+                .replace("${type}", type.equals("gapps") ? "gapps" : "vanilla")
+                .replace("${file_name}", update.getName());
+        update.setDownloadUrl(downloadUrl);
         update.setVersion(object.getString("version"));
         return update;
     }
